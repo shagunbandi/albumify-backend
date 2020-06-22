@@ -14,6 +14,8 @@ What we have is, just launch your server on any folder, it will analyse its cont
 
 ### Backend
 
+https://github.com/shagunbandi/albumify-backend
+
 Run the main.py file with location of your folder containing images, and sub folders on Images. 
 
 ```bash
@@ -24,6 +26,8 @@ python main.py <Location to your Photos Folder>
 This will run the python server on `localhost:8000`
 
 ### Frontend
+
+https://github.com/shagunbandi/albumify-frontend
 
 Install the required node_modules, and start the server
 
