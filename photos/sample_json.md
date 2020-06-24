@@ -1,23 +1,43 @@
-
-# get_all_images_with_path
-
-file_with_path = {
-    '/': ['img1', 'img2'],
-    '/wallpaper': ['wall1', 'wall2'],
-    '/wallpaper/clicked': ['click1', 'click2'],
-    '/wallpaper/downloads': ['down1', 'down2'],
-    '/holi':[],
-    '/holi/home': ['home_holi1', 'home_holi2'],
-    '/holi/bang': ['bang_holi1', 'bang_holi2'],
+{
+    "response": "Success",
+    "data": {
+        "file": {
+            "home": [
+                "home/10 copy 4.jpg",
+                "home/10 copy 3.jpg",
+                "home/10 copy 2.jpg"
+            ],
+            "home/Nested/New Folder With Items": [
+                "home/Nested/New Folder With Items/90 copy 2.jpg",
+                "home/Nested/New Folder With Items/90 copy 3.jpg",
+                "home/Nested/New Folder With Items/90 copy 4.jpg",
+                "home/Nested/New Folder With Items/100 copy 2.jpg",
+                "home/Nested/New Folder With Items/90 copy.jpg",
+                "home/Nested/New Folder With Items/90.jpg"
+            ],
+            "home/Nested": [
+                "home/Nested/10 copy 5.jpg"
+            ]
+        },
+        "folder": {
+            "home": [
+                "home/Nested"
+            ],
+            "home/Nested": [
+                "home/Nested/New Folder With Items"
+            ]
+        },
+        "root": "home"
+    }
 }
 
-folder_with_path = {
-    '/': ['/wallpaper', '/holi']
-    '/wallpaper': ['/wallpaper/clickd', '/wallpaper/downloads'],
-    '/wallpaper/clickd': [],
-    '/wallpaper/downloads': [],
-    '/holi': ['/holi/home', '/holi/bang'],
-    '/holi/home': [],
-    '/holi/bang': [],
-}
+Empty
 
+{
+    "response": "Success",
+    "data": {
+        "file": {},
+        "folder": {},
+        "root": "home"
+    }
+}

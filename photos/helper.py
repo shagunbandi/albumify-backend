@@ -31,7 +31,6 @@ def get_all_images_with_path_helper(path, join_with, file_dict, folder_dict):
             get_all_images_with_path_helper(join(path, f), join(join_with, f), file_dict, folder_dict)
 
 
-
 def get_all_images_with_path(path, join_with):
     file_dict = {}
     folder_dict = {}

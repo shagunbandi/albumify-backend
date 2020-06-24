@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+# albumify files
+album.albumify
+
 # production
 /build
 

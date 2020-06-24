@@ -1,13 +1,8 @@
 from django.http import JsonResponse
-from os import listdir
-from os.path import isfile, join
 from django.conf import settings
-from PIL import Image
-from PIL.ExifTags import TAGS
-from django.shortcuts import render
-import math
-
-
+import pickle
+import json
+from django.views.decorators.csrf import csrf_exempt
 from . import helper
 
 
@@ -23,26 +18,53 @@ def get_all_images_with_path(request):
     })
 
 
+@csrf_exempt
+def get_all_album_with_path(request):
+    try:
+        with open('album.albumify') as json_file:
+            data = json.load(json_file)
+    except:
+        data = {
+            "response": "Success",
+            "data": {
+                "file": {},
+                "folder": {},
+                "root": "home"
+            }
+        }
+
+    if request.method == 'GET':
+        return JsonResponse(data)
+
+    payload = json.loads(request.body)
+    album_name = payload['album_name']
+    album_path = payload['album_path']
+    folder_path = album_path + '/' + album_name
+
+    if album_path in data['data']['folder']:
+        if folder_path in data['data']['folder'][album_path]:
+            return JsonResponse({
+                "response": "Fail",
+                "msg": "Album Name Already Exists"
+            })
+        data['data']['folder'][album_path].append(folder_path)
+    else:
+        data['data']['folder'][album_path] = [folder_path]
+
+    with open("album.albumify", "w") as write_file:
+        json.dump(data, write_file)
+
+    data['current_directory'] = album_path
+    return JsonResponse(data)
+
+
 
 def all_images_urls(request):
-    page = 1
-    if request.method == 'GET':
-        page = int(request.GET['page'])
-
     data = helper.get_image_url_rec(path, 'home')
     total_files = len(data)
-    total_pages = math.ceil(total_files / IMAGES_PER_PAGE)
 
-
-    index_start = IMAGES_PER_PAGE * (page - 1)
-    index_end = IMAGES_PER_PAGE * page
-
-    data = data[index_start:index_end]
     return JsonResponse({
         'response': "Success",
         'data': data,
-        'total_pages': total_pages,
         'total_files':  total_files,
-        'total_till_now': (page - 1) * IMAGES_PER_PAGE + len(data),
-        'page_number': page
     })
