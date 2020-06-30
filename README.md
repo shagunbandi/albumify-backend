@@ -27,12 +27,15 @@ This will run the python server on `localhost:8000`
 
 ### Frontend
 
+Frontend is hosted on https://shagunbandi.github.io/albumify-frontend/
+
+Or to run it on local:
+
 https://github.com/shagunbandi/albumify-frontend
 
 Install the required node_modules, and start the server
 
 ```bash
-cd PhotoAlbumReact
 npm i
 npm start
 ```
