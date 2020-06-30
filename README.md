@@ -16,7 +16,7 @@ What we have is, just launch your server on any folder, it will analyse its cont
 
 https://github.com/shagunbandi/albumify-backend
 
-Run the main.py file with location of your folder containing images, and sub folders on Images. 
+Run the main.py file with location of your folder containing images. 
 
 ```bash
 pip install requirements.txt
